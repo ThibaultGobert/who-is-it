@@ -68,7 +68,7 @@
             android:layout_alignParentEnd="true" />
 
         <EditText
-            android:id="@+id/txtDescription"
+            android:id="@+id/txtDescriptionCreate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -86,7 +86,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/txtName"
+            android:id="@+id/txtNameCreate"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:gravity="center"

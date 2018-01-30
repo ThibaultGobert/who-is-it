@@ -51,6 +51,14 @@ public class UpdateCharactersActivity extends AppCompatActivity implements Loade
 
     }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedState){
+        super.onRestoreInstanceState(savedState);
+        getLoaderManager().restartLoader(0,null,this);
+    }
+
+
+
     private void initData(){
         adapter = new SimpsonAdapter(new ArrayList<SimpsonCharacter>(), getApplicationContext());
         recyclerView.setAdapter(adapter);

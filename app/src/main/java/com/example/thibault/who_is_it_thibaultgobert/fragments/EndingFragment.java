@@ -9,9 +9,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.thibault.who_is_it_thibaultgobert.MemoryLeakApplication;
 import com.example.thibault.who_is_it_thibaultgobert.R;
 import com.example.thibault.who_is_it_thibaultgobert.activities.MainActivity;
 import com.example.thibault.who_is_it_thibaultgobert.models.Game;
+import com.squareup.leakcanary.RefWatcher;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -75,5 +77,11 @@ public class EndingFragment extends Fragment {
                 ((MainActivity) getActivity()).showMenu();
             }
         });
+    }
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        RefWatcher refWatcher = MemoryLeakApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
     }
 }

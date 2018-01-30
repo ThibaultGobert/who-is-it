@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 
+import com.example.thibault.who_is_it_thibaultgobert.MemoryLeakApplication;
 import com.example.thibault.who_is_it_thibaultgobert.R;
 import com.example.thibault.who_is_it_thibaultgobert.activities.MainActivity;
 import com.example.thibault.who_is_it_thibaultgobert.adapters.SimpsonAdapter;
@@ -25,6 +26,7 @@ import com.example.thibault.who_is_it_thibaultgobert.models.Game;
 import com.example.thibault.who_is_it_thibaultgobert.models.SimpsonCharacter;
 import com.example.thibault.who_is_it_thibaultgobert.persistence.CharacterContract;
 import com.example.thibault.who_is_it_thibaultgobert.util.CustomRVItemTouchListener;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -161,6 +163,12 @@ public class RecyclerViewFragment extends Fragment
        // String[] split = character.getImagePath().split("/");//to avoid path separators
         //getActivity().getApplicationContext().deleteFile(split[split.length-1]);
 
+    }
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        RefWatcher refWatcher = MemoryLeakApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
     }
 
 

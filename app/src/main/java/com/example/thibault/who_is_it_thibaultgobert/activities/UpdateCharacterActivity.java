@@ -50,7 +50,7 @@ public class UpdateCharacterActivity extends AppCompatActivity{
     EditText txtName;
 
     private SimpsonCharacter character;
-
+    private Bitmap image;
 
     Game game;
     @Override
@@ -60,7 +60,13 @@ public class UpdateCharacterActivity extends AppCompatActivity{
         ButterKnife.bind(this);
         character = (SimpsonCharacter) getIntent().getSerializableExtra("character");
 
-        initData();
+
+        if(savedInstanceState ==null) {
+            initData();
+        }else{
+            image = savedInstanceState.getParcelable("BitmapImage");
+            imgCharacter.setImageBitmap(image);
+        }
         initImages();
         initListeners();
     }
@@ -148,10 +154,17 @@ public class UpdateCharacterActivity extends AppCompatActivity{
     }
 
     @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putParcelable("BitmapImage", image);
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 2 && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
+            image = imageBitmap;
             imgCharacter.setImageBitmap(imageBitmap);
             imgCharacter.setTag(RESULT_OK);
         }

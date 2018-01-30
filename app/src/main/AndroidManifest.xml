@@ -3,6 +3,7 @@
     package="com.example.thibault.who_is_it_thibaultgobert">
 
     <application
+        android:name=".MemoryLeakApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,10 +21,12 @@
         <activity android:name=".activities.CreateCharacterActivity"/>
         <activity android:name=".activities.UpdateCharactersActivity" />
         <activity android:name=".activities.UpdateCharacterActivity" />
+
         <provider
             android:authorities="com.example.thibault.provider.who_is_it_thibaultgobert"
             android:name=".persistence.CharacterProvider"
             android:exported="false"/>
     </application>
+
 
 </manifest>
