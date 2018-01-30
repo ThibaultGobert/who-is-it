@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Who-is-it-ThibaultGobert</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="create_confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+
+    create_confirm
+</resources>
